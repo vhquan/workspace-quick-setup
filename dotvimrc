@@ -1,0 +1,36 @@
+set nocompatible
+set encoding=utf-8
+set number relativenumber
+set tabstop=4
+set shiftwidth=4
+set noswapfile
+set nobackup
+"translate a tab character to spaces
+set expandtab
+set hlsearch
+set incsearch
+"auto save all files when get lot focus
+autocmd FocusLost * :wa
+"save on buffer switch
+set autowriteall
+"enable autocompletion
+set wildmode=longest,list,full
+set laststatus=2
+set noshowmode
+set background=dark
+syntax on
+filetype plugin indent on
+"disable automatic commenting on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"automatically deletes all trailing whitespaces on saving
+autocmd BufWritePre * %s/\s\+$//e
+"make j and k move to the next row, not file line, navigate by display lines
+nnoremap j gj
+nnoremap k gk
+"no use recording, the noobs stay with arrow key and recording
+map q <Nop>
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
