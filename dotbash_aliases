@@ -1,0 +1,5 @@
+alias ls='ls -hN --color=auto --group-directories-first'
+alias cls='clear&&ls'
+alias cla='clear&&la'
+# random commit message
+alias rc='git add -A && git commit -m "$(curl -s whatthecommit.com/index.txt)"'
