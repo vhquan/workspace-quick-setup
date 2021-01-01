@@ -38,54 +38,6 @@
 (global-linum-mode 1)
 (blink-cursor-mode -1)
 
-;; orgmode configs
-(setq org-export-with-sub-superscripts nil)
-(setq org-link-frame-setup '((file . find-file)))
-(setq org-support-shift-select t)
-
-(defun org-sitemap-custom-entry-format (entry style project)
-  (let ((filename (org-publish-find-title entry project)))
-    (if (= (length filename) 0)
-      (format "*%s*" entry)
-      (format "%s - [[file:%s][%s]]"
-              (format-time-string "%Y-%m-%d" (org-publish-find-date entry project))
-              entry
-              filename))))
-
-(setq org-publish-project-alist
-      '(
-        ("blog"
-         :base-directory "~/posts"
-         :base-extension "org"
-         :publishing-directory "~/vhquan.github.io/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :exclude "rss.org\\[index.org\\|.*/private/.*"
-         :auto-sitemap t
-         :sitemap-filename "index.org"
-         :sitemap-title "QUAN'S BLOG"
-         :sitemap-format-entry org-sitemap-custom-entry-format
-         :html-head-extra "<link rel=\"stylesheet\" href=\"/_css/style.css\">"
-         :html-link-home ".."
-         :author "Quan Vu"
-         :email "vuhongquanbk97@gmail.com")
-        ("blog-static"
-         :base-directory "~/posts"
-         :recursive t
-         :base-extension "jpg\\|png\\|giff\\|mp4"
-         :publishing-directory "~/vhquan.github.io/"
-         :publishing-function org-publish-attachment)
-        ("all" :components ("blog" "blog-static"))
-        ))
-
-;; postamble info
-(setq org-export-with-author t) ;; print out author name
-(setq org-export-with-email t) ;; print out email of author
-(setq org-export-with-date t) ;; print out date
-(setq org-return-follows-link t)
-(setq org-hide-emphasis-markets t)
-(setq org-html-validation-link nil)
-
 ;; show matching parenthesis
 (setq show-paren-delay 0)
 (show-paren-mode 1)
